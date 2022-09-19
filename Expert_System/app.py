@@ -12,6 +12,20 @@ def creacion_grafo(x):
     G.add_node("B1",DATA ="palma joven",SEC=0)
     G.add_node("C1",DATA ="palmas Adultas",SEC=0)
 
+    G.add_node("A2",DATA ="Mancha color crema sobre la radicula",SEC=0)
+    G.add_node("B2",DATA ="Moho color verde azul sobre lesiones",SEC=0)
+    G.add_node("C2",DATA ="Foliolos enroscados hacia arriba",SEC=0)
+    G.add_node("D2",DATA ="Coloracion verde palido - amarillento",SEC=0)
+    G.add_node("E2",DATA ="Perdida de brillo en hojas inferiores",SEC=0)
+    G.add_node("F2",DATA ="Secamiento de color marron en las puntas de las hojas",SEC=0)
+    G.add_node("G2",DATA ="Manchas color anaranjado en los foliolos",SEC=0)
+    G.add_node("H2",DATA ="Necrosis de los tejidos",SEC=0)
+    G.add_node("I2",DATA ="Hoja pequeña",SEC=0)
+    G.add_node("J2",DATA ="Hoja de gancho",SEC=0)
+    G.add_node("K2",DATA ="Foliolos quebradizos",SEC=0)
+    G.add_node("P2",DATA ="pudricion de los racimos",SEC=0)
+    G.add_node("N2",DATA ="Presencia de protozoarios flagelados en raices",SEC=0)
+
     G.add_node("A3",DATA ="germen marron",SEC=0)
     G.add_node("B3",DATA ="deficiencia de nitrogeno",SEC=0)
     G.add_node("C3",DATA ="deficiencia de magnesio",SEC=0)
@@ -55,21 +69,34 @@ def creacion_grafo(x):
         
     #Gráficar
     posicion = {
-        "A1":(0,2),
-        "B1":(0,4),
-        "C1":(0,6),
+        "A1":(0,0),
+        "B1":(0,6),
+        "C1":(0,12),
+        "A2":(1,0),
+        "B2":(1,1),
+        "C2":(1,2),
+        "D2":(1,3),
+        "E2":(1,4),
+        "F2":(1,5),
+        "G2":(1,6),
+        "H2":(1,7),
+        "I2":(1,8),
+        "J2":(1,9),
+        "K2":(1,10),
+        "P2":(1,11),
+        "N2":(1,12),
         "A3":(2,0),
-        "B3":(2,1),
-        "C3":(2,2),
-        "D3":(2,3),
-        "E3":(2,4),
-        "F3":(2,5),
-        "A4":(3,1),
-        "B4":(3,2),
-        "C4":(3,3),
-        "D4":(3,4),
-        "E4":(3,5),
-        "F4":(3,7)
+        "B3":(2,2.5),
+        "C3":(2,5),
+        "D3":(2,7.5),
+        "E3":(2,10),
+        "F3":(2,12),
+        "A4":(3,0),
+        "B4":(3,2.5),
+        "C4":(3,5),
+        "D4":(3,7.5),
+        "E4":(3,10),
+        "F4":(3,12)
     }
 
     nx.draw(G,pos=posicion, with_labels=True,node_size=500,node_color=color_map)
@@ -97,17 +124,25 @@ def ventana():
     ventana.title("Palmas_Interfaz")
     ventana.geometry("640x480")
     tkinter.Label(ventana,text="Palmas SE").place(x=280,y=20)
-    tkinter.Label(ventana,text="Identifique la edad de la palma:").place(x=90,y=70)
-    tkinter.Label(ventana,text="¿Cuáles son los sintomas de la palma?:").place(x=350,y=70)
-    ttk.Button(ventana, text="Semilla",command=lambda: rellenar(data,"semillas de palma")).place(x=90,y=100)
-    ttk.Button(ventana, text="Palmas Jovenes",command=lambda: rellenar(data,"palma joven")).place(x=90,y=130)
-    ttk.Button(ventana, text="Palmas Adultas",command=lambda: rellenar(data,"palmas Adultas")).place(x=90,y=160)
-    ttk.Button(ventana, text="S1",command=lambda: rellenar(data,"s1")).place(x=350,y=100)
-    ttk.Button(ventana, text="S2",command=lambda: rellenar(data,"s2")).place(x=350,y=130)
-    ttk.Button(ventana, text="S3",command=lambda: rellenar(data,"s3")).place(x=350,y=160)
-    ttk.Button(ventana, text="S4",command=lambda: rellenar(data,"s4")).place(x=350,y=190)
-    ttk.Button(ventana, text="S5",command=lambda: rellenar(data,"s5")).place(x=350,y=220)
-    tkinter.Button(ventana,text="Buscar",command=lambda: info(data)).place(x=280,y=350)
+    tkinter.Label(ventana,text="Identifique la edad de la palma:").place(x=40,y=70)
+    tkinter.Label(ventana,text="¿Cuáles son los sintomas de la palma?:").place(x=220,y=70)
+    ttk.Button(ventana, text="Semilla",command=lambda: rellenar(data,"semillas de palma")).place(x=40,y=100)
+    ttk.Button(ventana, text="Palmas Jovenes",command=lambda: rellenar(data,"palma joven")).place(x=40,y=130)
+    ttk.Button(ventana, text="Palmas Adultas",command=lambda: rellenar(data,"palmas Adultas")).place(x=40,y=160)
+    ttk.Button(ventana, text="Mancha color crema sobre la radicula",command=lambda: rellenar(data,"Mancha color crema sobre la radicula")).place(x=220,y=100)
+    ttk.Button(ventana, text="Moho color verde azul sobre lesiones",command=lambda: rellenar(data,"Moho color verde azul sobre lesiones")).place(x=220,y=130)
+    ttk.Button(ventana, text="Foliolos enroscados hacia arriba",command=lambda: rellenar(data,"Foliolos enroscados hacia arriba")).place(x=220,y=160)
+    ttk.Button(ventana, text="Coloracion verde palido - amarillento",command=lambda: rellenar(data,"Coloracion verde palido - amarillento")).place(x=220,y=190)
+    ttk.Button(ventana, text="Perdida de brillo en hojas inferiores",command=lambda: rellenar(data,"Perdida de brillo en hojas inferiores")).place(x=220,y=220)
+    ttk.Button(ventana, text="Secamiento de color marron en las puntas de las hojas",command=lambda: rellenar(data,"Secamiento de color marron en las puntas de las hojas")).place(x=220,y=250)
+    ttk.Button(ventana, text="Manchas color anaranjado en los foliolos",command=lambda: rellenar(data,"Manchas color anaranjado en los foliolos")).place(x=220,y=280)
+    ttk.Button(ventana, text="Necrosis de los tejidos",command=lambda: rellenar(data,"Necrosis de los tejidos")).place(x=220,y=310)
+    ttk.Button(ventana, text="Hoja pequeña",command=lambda: rellenar(data,"Hoja pequeña")).place(x=220,y=340)
+    ttk.Button(ventana, text="Hoja de gancho",command=lambda: rellenar(data,"Hoja de gancho")).place(x=220,y=370)
+    ttk.Button(ventana, text="Foliolos quebradizos",command=lambda: rellenar(data,"Foliolos quebradizos")).place(x=220,y=400)
+    ttk.Button(ventana, text="pudricion de los racimos",command=lambda: rellenar(data,"Foliolos quebradizos")).place(x=220,y=430)
+    ttk.Button(ventana, text="Presencia de protozoarios flagelados en raices",command=lambda: rellenar(data,"Foliolos quebradizos")).place(x=220,y=220)
+    tkinter.Button(ventana,text="Buscar",command=lambda: info(data)).place(x=40,y=350)
     ventana.mainloop()
    
 ventana()
