@@ -1,3 +1,5 @@
+#Hecho--SANTIAGO DELVALLE
+
 from tkinter import Label, ttk
 import networkx as nx
 import matplotlib.pyplot as plt
@@ -8,47 +10,78 @@ def creacion_grafo(x):
     G = nx.DiGraph()
     # asignar atributos a nodos y aristas
     #Añadir nodos
-    G.add_node("A1",DATA ="semillas de palma",SEC=0)
-    G.add_node("B1",DATA ="palma joven",SEC=0)
-    G.add_node("C1",DATA ="palmas Adultas",SEC=0)
 
-    G.add_node("A2",DATA ="Mancha color crema sobre la radicula",SEC=0)
-    G.add_node("B2",DATA ="Moho color verde azul sobre lesiones",SEC=0)
-    G.add_node("C2",DATA ="Foliolos enroscados hacia arriba",SEC=0)
-    G.add_node("D2",DATA ="Coloracion verde palido - amarillento",SEC=0)
-    G.add_node("E2",DATA ="Perdida de brillo en hojas inferiores",SEC=0)
-    G.add_node("F2",DATA ="Secamiento de color marron en las puntas de las hojas",SEC=0)
-    G.add_node("G2",DATA ="Manchas color anaranjado en los foliolos",SEC=0)
-    G.add_node("H2",DATA ="Necrosis de los tejidos",SEC=0)
-    G.add_node("I2",DATA ="Hoja pequeña",SEC=0)
-    G.add_node("J2",DATA ="Hoja de gancho",SEC=0)
-    G.add_node("K2",DATA ="Foliolos quebradizos",SEC=0)
-    G.add_node("P2",DATA ="pudricion de los racimos",SEC=0)
-    G.add_node("N2",DATA ="Presencia de protozoarios flagelados en raices",SEC=0)
+    #Plantas
+    G.add_node("A1",DATA ="semillas de palma",SEC=0,REC = "")
+    G.add_node("B1",DATA ="palma joven",SEC=0,REC = "")
+    G.add_node("C1",DATA ="palmas Adultas",SEC=0,REC = "")
 
-    G.add_node("A3",DATA ="germen marron",SEC=0)
-    G.add_node("B3",DATA ="deficiencia de nitrogeno",SEC=0)
-    G.add_node("C3",DATA ="deficiencia de magnesio",SEC=0)
-    G.add_node("D3",DATA ="deficiencia de potasio",SEC=0)
-    G.add_node("E3",DATA ="deficiencia de boro",SEC=0)
-    G.add_node("F3",DATA ="marchitez sorpresiva",SEC=0)
+    #Sintomas
+    G.add_node("A2",DATA ="Mancha color crema sobre la radicula",SEC=0,REC = "")
+    G.add_node("B2",DATA ="Moho color verde azul sobre lesiones",SEC=0,REC = "")
+    G.add_node("C2",DATA ="Foliolos enroscados hacia arriba",SEC=0,REC = "")
+    G.add_node("D2",DATA ="Coloracion verde palido - amarillento",SEC=0,REC = "")
+    G.add_node("E2",DATA ="Perdida de brillo en hojas inferiores",SEC=0,REC = "")
+    G.add_node("F2",DATA ="Secamiento de color marron en las puntas de las hojas",SEC=0,REC = "")
+    G.add_node("G2",DATA ="Manchas color anaranjado en los foliolos",SEC=0,REC = "")
+    G.add_node("H2",DATA ="Necrosis de los tejidos",SEC=0,REC = "")
+    G.add_node("I2",DATA ="Hoja pequeña",SEC=0,REC = "")
+    G.add_node("J2",DATA ="Hoja de gancho",SEC=0,REC = "")
+    G.add_node("K2",DATA ="Foliolos quebradizos",SEC=0,REC = "")
+    G.add_node("P2",DATA ="pudricion de los racimos",SEC=0,REC = "")
+    G.add_node("N2",DATA ="Presencia de protozoarios flagelados en raices",SEC=0,REC = "")
 
-    G.add_node("A4",DATA ="Afecta toda la raíz en emergencia causando la muerte de la plántula.",SEC=0)
-    G.add_node("B4",DATA ="El tamaño de las hojas se reduce",SEC=0)
-    G.add_node("C4",DATA ="Puede  restringir  el  desarrollo  de  las  hojas  y  raíces",SEC=0)
-    G.add_node("D4",DATA ="deficiencia de potasio",SEC=0)
-    G.add_node("E4",DATA ="deficiencia de boro",SEC=0)
-    G.add_node("F4",DATA ="Secamiento de gran parte de la superficie de las  hojas.",SEC=0)
-
+    #Enfermedades
+    G.add_node("A3",DATA ="germen marron",SEC=0,REC = ["Mancha color crema sobre la radicula","Moho color verde azul sobre lesiones"] )
+    G.add_node("B3",DATA ="deficiencia de nitrogeno",SEC=0,REC = ["Foliolos enroscados hacia arriba","Coloracion verde palido - amarillento"])
+    G.add_node("C3",DATA ="deficiencia de magnesio",SEC=0,REC = ["Perdida de brillo en hojas inferiores","Secamiento de color marron en las puntas de las hojas"])
+    G.add_node("D3",DATA ="deficiencia de potasio",SEC=0,REC = ["Manchas color anaranjado en los foliolos","Necrosis de los tejidos"])
+    G.add_node("E3",DATA ="deficiencia de boro",SEC=0,REC = ["Hoja pequeña","Hoja de gancho","Foliolos quebradizos"])
+    G.add_node("F3",DATA ="marchitez sorpresiva",SEC=0,REC = ["pudricion de los racimos","Presencia de protozoarios flagelados en raices"])
 
     #Añadir aristas
 
-    G.add_edge("A3","A4")
-    G.add_edge("B3","B4")
-    G.add_edge("C3","C4")
-    G.add_edge("D3","D4")
-    G.add_edge("E3","E4")
-    G.add_edge("F3","F4")
+    #Marrón
+    G.add_edge("A1","A2")
+    G.add_edge("A1","B2")
+    G.add_edge("A2","A3")
+    G.add_edge("B2","A3")
+
+    #Nitrogeno
+    G.add_edge("B1","C2")
+    G.add_edge("B1","D2")
+    G.add_edge("C2","B3")
+    G.add_edge("D2","B3")
+
+    #Magnesio
+    G.add_edge("B1","E2")
+    G.add_edge("B1","F2")
+    G.add_edge("C1","E2")
+    G.add_edge("C1","F2")
+    G.add_edge("E2","C3")
+    G.add_edge("F2","C3")
+
+    #Potasio
+    G.add_edge("B1","G2")
+    G.add_edge("B1","H2")
+    G.add_edge("C1","G2")
+    G.add_edge("C1","H2")
+    G.add_edge("G2","D3")
+    G.add_edge("H2","D3")
+
+    #Boro
+    G.add_edge("C1","I2")
+    G.add_edge("C1","J2")
+    G.add_edge("C1","K2")
+    G.add_edge("I2","E3")
+    G.add_edge("J2","E3")
+    G.add_edge("K2","E3")
+    
+    #Marchitez
+    G.add_edge("B1","P2")
+    G.add_edge("B1","N2")
+    G.add_edge("P2","F3")
+    G.add_edge("N2","F3")
 
     #Colores--Identificador
     color_map = []
@@ -59,14 +92,29 @@ def creacion_grafo(x):
                 dic["SEC"] = 1
 
     for node in G.nodes(data=True):
+        if(type(node[1]["REC"])!=str):
+            contador = 0
+            for p in x:
+                for q in node[1]["REC"]:
+                    if(q==p):
+                        contador+=1
+                        break
+            node[1]["SEC"] = (contador/len(node[1]["REC"]))*100
+
+    for node in G.nodes(data=True):
         dic = node[1]
         if(dic["SEC"]==1):
             color_map.append("yellow")
+        elif(dic["SEC"]>10):
+            if(dic["SEC"] < 45):
+                color_map.append("green")
+            elif(dic["SEC"]<65):
+                color_map.append("yellow")
+            else:
+                color_map.append("red")
         else:
-            color_map.append("green")
+            color_map.append("cyan")
 
-   
-        
     #Gráficar
     posicion = {
         "A1":(0,0),
@@ -90,13 +138,7 @@ def creacion_grafo(x):
         "C3":(2,5),
         "D3":(2,7.5),
         "E3":(2,10),
-        "F3":(2,12),
-        "A4":(3,0),
-        "B4":(3,2.5),
-        "C4":(3,5),
-        "D4":(3,7.5),
-        "E4":(3,10),
-        "F4":(3,12)
+        "F3":(2,12)
     }
 
     nx.draw(G,pos=posicion, with_labels=True,node_size=500,node_color=color_map)
