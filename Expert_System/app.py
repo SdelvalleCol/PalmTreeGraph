@@ -6,6 +6,15 @@ import matplotlib.pyplot as plt
 import tkinter 
 from tkinter import messagebox
 
+def encontrar_dupli(x,y):
+    x1 = set(x)
+    x2 = set(y)
+    p = len(x1 & x2)
+    if(p!=0):
+        return True
+    else:
+        return False
+
 def creacion_grafo(x):
     G = nx.DiGraph()
     # asignar atributos a nodos y aristas
@@ -32,12 +41,12 @@ def creacion_grafo(x):
     G.add_node("N2",DATA ="Presencia de protozoarios flagelados en raices",SEC=0,REC = "")
 
     #Enfermedades
-    G.add_node("A3",DATA ="germen marron",SEC=0,REC = ["Mancha color crema sobre la radicula","Moho color verde azul sobre lesiones"] , cons ="Afecta toda   la   raíz en emergencia causando la muerte de la plántula" ,trat ="El germen marrón se previene manteniendo el contenido de humedad de la semilla por debajo del 19%" )
-    G.add_node("B3",DATA ="deficiencia de nitrogeno",SEC=0,REC = ["Foliolos enroscados hacia arriba","Coloracion verde palido - amarillento"], cons ="El tamaño de las hojas se reduce" ,trat ="Vigilar la fertilidad del suelo que  se  usa  en   las  bolsas  de  vivero  y/o  fallas  en  el  programa   de  fertilización")
-    G.add_node("C3",DATA ="deficiencia de magnesio",SEC=0,REC = ["Perdida de brillo en hojas inferiores","Secamiento de color marron en las puntas de las hojas"], cons ="Puede  restringir  el  desarrollo  de  las  hojas  y  raíces" ,trat ="Vigilar la fertilidad del suelo que se  usa  en   las  bolsas  de  vivero  y/o  fallas  en  el  programa   de  fertilización. Utilizar fertilizante de sulfato de magnesio")
-    G.add_node("D3",DATA ="deficiencia de potasio",SEC=0,REC = ["Manchas color anaranjado en los foliolos","Necrosis de los tejidos"], cons ="La  palma  africana  requiere  de  buenas  cantidades  de  potasio  y  este  elemento  es  removido  en  los  racimos  cosechados.  Los  síntomas  de  su  deficiencia  se  pre-sentan  en  cualquier  edad,  pero  son  más acentuados en suelos  pobres  y  en   material  con  alto  potencial  de  rendimiento,  si  éste  no  recibe  una  adecuada  fertilización." ,trat ="Utilizar fertilizante de cloruro de potasio sin ser excesivo, ya que esto puede inducir en una deficiencia de magnesio y boro")
-    G.add_node("E3",DATA ="deficiencia de boro",SEC=0,REC = ["Hoja pequeña","Hoja de gancho","Foliolos quebradizos"], cons ="Se  manifiesta  por  una  gran  variedad  de  síntomas,  particularmente   por  malformaciones  y  disminución  del   tamaño  de   las  hojas.   La  denominada  hoja  de  gancho   se   manifiesta  por  un  acortamiento  de   los   folíolos,  que  permanecen  anormalmente  compacta-dos  en  el  raquis  y  rígidos.  En  el extremo de ellos se forma   un   gancho   característico,   rígido,  debido  a  la  distorsión  de  la  nervadura  central.   La  superficie  de   la   lámina   en    la   porción   del   gancho   aparece   corrugada   y   más   angosta   y   los   tejidos   se   hacen   quebradizos.   A   veces   la  parte  terminal  del  gancho  se dobla  en  forma de zigzag." ,trat ="En palmas adultas, se puede corregir aplicando Borax (tetraborato de sodio) en las axilas de las hojas, arriba de la zona donde se desarrollan los racimos. La aplicacion es anual y la dosis varia entre 60 y 70grs dependiendo de la magnitud de los sintomas")
-    G.add_node("F3",DATA ="marchitez sorpresiva",SEC=0,REC = ["pudricion de los racimos","Presencia de protozoarios flagelados en raices"], cons ="La Marchitez sorpresiva de la palma de aceite ha sido asociada a la presencia de un protozoario flagelado del género Phytomonas (Trypanosomatidae), identifi-cado como P. staheli por McGhee y McGuee en 1980 (McCoy, 1981; McCoy y Martínez, 1982). El papel de estos microorganismos como patógenos de plantas no es nuevo, ellos fueron reconocidos en plantas de café  desde  1931,  y  fueron  transmitidos  por  injerto, pero no se identificó ningún vector y por muchos años no se les prestó mayor atención como patógenos de plantas.Los flagelados aislados de palmas son alargados, con un tamaño aproximado de 15-20 x 0,5-1,0 micras. Su estructura general es la típica del género Phytomonas. Ellos  no  se  encuentran  distribuidos  uniformemente en la palma, pudiéndose encontrar en algunos de los haces  vasculares  mientras  están  ausentes  en  otros (McCoy, 1981).Los primeros síntomas de la enfermedad incluyen la pérdida del brillo de los frutos, seguidos de la pudrición de los racimos y la detención del desarrollo de nuevas inflorescencias. Estos son seguidos por una decolo-ración café de los folíolos y su deshidratación severa, que se inicia en las hojas más bajas, comenzando en el ápice de los folíolos del ápice de la hoja y progre-sando rápidamente de abajo hacia arriba, hasta afectar a todas las hojas (Figura 5). Estos síntomas solo se comienzan a presentar en el campo en la medida en que las palmas alcanzan su estado de madurez" ,trat ="No hay evidencias de recuperación de una palma después de presentar los síntomas de la enfermedad, la Marchitez sorpresiva es letal. Esta enfermedad es más prevalente en plantaciones donde no se realizan buenas prácticas de manejo, especialmente no se realiza el control de las gramíneas. La enfermedad se ha controlado cuando se realizan campañas de identificación temprana de las palmas enfermas y se procede a su rápida erradicación, complementada con el manejo adecuado de las gramíneas presentes en los lotes afectados y la aplicación de insecticidas en el área, para reducir la población de los insectos que pueden estar involucrados en su diseminación")
+    G.add_node("A3",DATA ="germen marron",SEC=0,REC = ["Mancha color crema sobre la radicula","Moho color verde azul sobre lesiones"] , cons ="Afecta toda   la   raíz en emergencia causando la muerte de la plántula" ,trat ="El germen marrón se previene manteniendo el contenido de humedad de la semilla por debajo del 19%" , planta=["semillas de palma"] )
+    G.add_node("B3",DATA ="deficiencia de nitrogeno",SEC=0,REC = ["Foliolos enroscados hacia arriba","Coloracion verde palido - amarillento"], cons ="El tamaño de las hojas se reduce" ,trat ="Vigilar la fertilidad del suelo que  se  usa  en   las  bolsas  de  vivero  y/o  fallas  en  el  programa   de  fertilización",planta=["palma joven"])
+    G.add_node("C3",DATA ="deficiencia de magnesio",SEC=0,REC = ["Perdida de brillo en hojas inferiores","Secamiento de color marron en las puntas de las hojas"], cons ="Puede  restringir  el  desarrollo  de  las  hojas  y  raíces" ,trat ="Vigilar la fertilidad del suelo que se  usa  en   las  bolsas  de  vivero  y/o  fallas  en  el  programa   de  fertilización. Utilizar fertilizante de sulfato de magnesio",planta=["palma joven","palmas Adultas"])
+    G.add_node("D3",DATA ="deficiencia de potasio",SEC=0,REC = ["Manchas color anaranjado en los foliolos","Necrosis de los tejidos"], cons ="La  palma  africana  requiere  de  buenas  cantidades  de  potasio  y  este  elemento  es  removido  en  los  racimos  cosechados.  Los  síntomas  de  su  deficiencia  se  pre-sentan  en  cualquier  edad,  pero  son  más acentuados en suelos  pobres  y  en   material  con  alto  potencial  de  rendimiento,  si  éste  no  recibe  una  adecuada  fertilización." ,trat ="Utilizar fertilizante de cloruro de potasio sin ser excesivo, ya que esto puede inducir en una deficiencia de magnesio y boro",planta=["palma joven","palmas Adultas"])
+    G.add_node("E3",DATA ="deficiencia de boro",SEC=0,REC = ["Hoja pequeña","Hoja de gancho","Foliolos quebradizos"], cons ="Se  manifiesta  por  una  gran  variedad  de  síntomas,  particularmente   por  malformaciones  y  disminución  del   tamaño  de   las  hojas.   La  denominada  hoja  de  gancho   se   manifiesta  por  un  acortamiento  de   los   folíolos,  que  permanecen  anormalmente  compacta-dos  en  el  raquis  y  rígidos.  En  el extremo de ellos se forma   un   gancho   característico,   rígido,  debido  a  la  distorsión  de  la  nervadura  central.   La  superficie  de   la   lámina   en    la   porción   del   gancho   aparece   corrugada   y   más   angosta   y   los   tejidos   se   hacen   quebradizos.   A   veces   la  parte  terminal  del  gancho  se dobla  en  forma de zigzag." ,trat ="En palmas adultas, se puede corregir aplicando Borax (tetraborato de sodio) en las axilas de las hojas, arriba de la zona donde se desarrollan los racimos. La aplicacion es anual y la dosis varia entre 60 y 70grs dependiendo de la magnitud de los sintomas",planta=["palmas Adultas"])
+    G.add_node("F3",DATA ="marchitez sorpresiva",SEC=0,REC = ["pudricion de los racimos","Presencia de protozoarios flagelados en raices"], cons ="La Marchitez sorpresiva de la palma de aceite ha sido asociada a la presencia de un protozoario flagelado del género Phytomonas (Trypanosomatidae), identifi-cado como P. staheli por McGhee y McGuee en 1980 (McCoy, 1981; McCoy y Martínez, 1982). El papel de estos microorganismos como patógenos de plantas no es nuevo, ellos fueron reconocidos en plantas de café  desde  1931,  y  fueron  transmitidos  por  injerto, pero no se identificó ningún vector y por muchos años no se les prestó mayor atención como patógenos de plantas.Los flagelados aislados de palmas son alargados, con un tamaño aproximado de 15-20 x 0,5-1,0 micras. Su estructura general es la típica del género Phytomonas. Ellos  no  se  encuentran  distribuidos  uniformemente en la palma, pudiéndose encontrar en algunos de los haces  vasculares  mientras  están  ausentes  en  otros (McCoy, 1981).Los primeros síntomas de la enfermedad incluyen la pérdida del brillo de los frutos, seguidos de la pudrición de los racimos y la detención del desarrollo de nuevas inflorescencias. Estos son seguidos por una decolo-ración café de los folíolos y su deshidratación severa, que se inicia en las hojas más bajas, comenzando en el ápice de los folíolos del ápice de la hoja y progre-sando rápidamente de abajo hacia arriba, hasta afectar a todas las hojas (Figura 5). Estos síntomas solo se comienzan a presentar en el campo en la medida en que las palmas alcanzan su estado de madurez" ,trat ="No hay evidencias de recuperación de una palma después de presentar los síntomas de la enfermedad, la Marchitez sorpresiva es letal. Esta enfermedad es más prevalente en plantaciones donde no se realizan buenas prácticas de manejo, especialmente no se realiza el control de las gramíneas. La enfermedad se ha controlado cuando se realizan campañas de identificación temprana de las palmas enfermas y se procede a su rápida erradicación, complementada con el manejo adecuado de las gramíneas presentes en los lotes afectados y la aplicación de insecticidas en el área, para reducir la población de los insectos que pueden estar involucrados en su diseminación",planta=["palma joven"])
 
     #Añadir aristas
 
@@ -96,7 +105,7 @@ def creacion_grafo(x):
             contador = 0
             for p in x:
                 for q in node[1]["REC"]:
-                    if(q==p):
+                    if(q==p and encontrar_dupli(x,node[1]["planta"])):
                         contador+=1
                         break
             node[1]["SEC"] = (contador/len(node[1]["REC"]))*100
@@ -141,9 +150,11 @@ def creacion_grafo(x):
         "F3":(2,12)
     }
 
-    ##INFORMACION
+    nx.draw(G,pos=posicion, with_labels=True,node_size=500,node_color=color_map)
+    plt.title("Grafo de enfermedad (Palma)")
+    plt.show()
 
-    sintomas = []
+    ##INFORMACION
     for node in G.nodes(data=True):
         cui = ""
         if(node[1]["SEC"]>10):
@@ -153,11 +164,7 @@ def creacion_grafo(x):
                  cui = "Enfermedad:" + node[1]["DATA"] + "\n" "Consecuencia: " + node[1]["cons"] + "\n" + "Tratamiento: " + node[1]["trat"] + "\n" + 'Atención ('+  str(node[1]["SEC"])  + '%)'
             else:
                  cui = "Enfermedad:" + node[1]["DATA"] + "\n" "Consecuencia: " + node[1]["cons"] + "\n" + "Tratamiento: " + node[1]["trat"] + "\n" + 'Peligro extremo ('+  str(node[1]["SEC"])  + '%)'
-            print(cui)
-
-    nx.draw(G,pos=posicion, with_labels=True,node_size=500,node_color=color_map)
-    plt.title("Grafo de enfermedad (Palma)")
-    plt.show()
+            messagebox.showinfo(message="Enfermedades\n" + cui, title="Alerta_Enfermedad")
 
 def rellenar(x,y):
     mensaje = ""
@@ -201,5 +208,6 @@ def ventana():
     tkinter.Button(ventana,text="Buscar",command=lambda: info(data)).place(x=40,y=350)
     ventana.mainloop()
    
+
 ventana()
 
