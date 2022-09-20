@@ -1,0 +1,10 @@
+Nombres: 
+Santiago Andres Del Valle Pinilla || 000427744
+Diego Ángulo || 000431755
+
+Tecnología utilizadas 
+
+*tkinter 
+*networkx
+*matplotlib.pyplot  
+*from tkinter import [messagebox]
